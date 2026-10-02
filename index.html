@@ -9,10 +9,6 @@
 
 <style>
 
-/* =========================================
-   BASIC
-========================================= */
-
 * {
     box-sizing: border-box;
 }
@@ -37,7 +33,7 @@ body {
 
 
 /* =========================================
-   MAIN CONTAINER
+   CONTAINER
 ========================================= */
 
 .container {
@@ -87,7 +83,7 @@ body {
 
     background: #ff5c9a;
 
-    border: 6px solid #ff9fc2;
+    border: 5px solid #ff9fc2;
 }
 
 
@@ -151,7 +147,7 @@ body {
 }
 
 
-/* lid ribbon */
+/* ribbon on lid */
 
 .lid::after {
     content: "";
@@ -176,14 +172,14 @@ body {
 .bow-right {
     position: absolute;
 
-    width: 38px;
-    height: 30px;
+    width: 30px;
+    height: 25px;
 
-    top: -15px;
+    top: -12px;
 
     background: #ffd166;
 
-    border: 5px solid #fff0a6;
+    border: 4px solid #fff0a6;
 
     z-index: 4;
 
@@ -192,37 +188,37 @@ body {
 }
 
 .bow-left {
-    left: 39px;
+    left: 30px;
 
     transform: rotate(-20deg);
 }
 
 .bow-right {
-    right: 39px;
+    right: 30px;
 
     transform: rotate(20deg);
 }
 
 
 /* =========================================
-   OPEN ANIMATION
+   OPEN GIFT
 ========================================= */
 
 .gift.open .lid {
     transform:
-        translate(-5px, -55px)
+        translate(-4px, -42px)
         rotate(-5deg);
 }
 
 .gift.open .bow-left {
     transform:
-        translate(-18px, -25px)
+        translate(-12px, -18px)
         rotate(-35deg);
 }
 
 .gift.open .bow-right {
     transform:
-        translate(18px, -25px)
+        translate(12px, -18px)
         rotate(35deg);
 }
 
@@ -257,36 +253,32 @@ body {
 
 
 /* =========================================
-   FLOWERS AREA
+   FLOWERS
 ========================================= */
 
 .flowers {
     position: absolute;
 
     width: 360px;
-    height: 300px;
+    height: 220px;
 
     left: 0;
-    bottom: 180px;
+    bottom: 210px;
 
     pointer-events: none;
 
-    z-index: 4;
+    z-index: 7;
 }
 
-
-/* =========================================
-   FLOWER
-========================================= */
 
 .flower {
     position: absolute;
 
     left: 50%;
-    top: 50%;
+    top: 80%;
 
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
 
     opacity: 0;
 
@@ -303,42 +295,40 @@ body {
 
     position: absolute;
 
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
 
-    left: 6px;
-    top: 6px;
+    left: 5px;
+    top: 5px;
 
     background: currentColor;
 
     box-shadow:
-        -8px 0 currentColor,
-        8px 0 currentColor,
-        0 -8px currentColor,
-        0 8px currentColor;
+        -7px 0 currentColor,
+        7px 0 currentColor,
+        0 -7px currentColor,
+        0 7px currentColor;
 }
 
 
-/* flower center */
+/* center */
 
 .flower::after {
     content: "";
 
     position: absolute;
 
-    width: 7px;
-    height: 7px;
+    width: 6px;
+    height: 6px;
 
-    left: 8px;
-    top: 8px;
+    left: 6px;
+    top: 6px;
 
     background: #ffd166;
 }
 
 
-/* =========================================
-   FLOWER COLORS
-========================================= */
+/* colors */
 
 .flower1 {
     color: #ff6fae;
@@ -374,248 +364,361 @@ body {
 
 
 /* =========================================
-   FLOWER BURST
+   FLOWER ANIMATIONS
+   Flowers gather on the lid
 ========================================= */
 
 .gift.open ~ .flowers .flower {
-    animation-duration: 1.4s;
+    animation-duration: 1.5s;
 
     animation-fill-mode: forwards;
 
-    animation-timing-function: steps(10);
+    animation-timing-function: steps(12);
 }
 
 
-/* flower 1 */
+/* left */
 
 .gift.open ~ .flowers .flower1 {
     animation-name: flower1;
     animation-delay: 0s;
 }
 
+@keyframes flower1 {
 
-/* flower 2 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(-85px, -110px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-65px, -93px)
+            scale(1);
+    }
+}
+
+
+/* left-middle */
 
 .gift.open ~ .flowers .flower2 {
     animation-name: flower2;
     animation-delay: 0.05s;
 }
 
+@keyframes flower2 {
 
-/* flower 3 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(-55px, -145px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-42px, -100px)
+            scale(1);
+    }
+}
+
+
+/* center */
 
 .gift.open ~ .flowers .flower3 {
     animation-name: flower3;
     animation-delay: 0.1s;
 }
 
+@keyframes flower3 {
 
-/* flower 4 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(-5px, -160px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-15px, -110px)
+            scale(1);
+    }
+}
+
+
+/* right-middle */
 
 .gift.open ~ .flowers .flower4 {
     animation-name: flower4;
     animation-delay: 0.15s;
 }
 
+@keyframes flower4 {
 
-/* flower 5 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(55px, -145px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(32px, -100px)
+            scale(1);
+    }
+}
+
+
+/* right */
 
 .gift.open ~ .flowers .flower5 {
     animation-name: flower5;
     animation-delay: 0.2s;
 }
 
+@keyframes flower5 {
 
-/* flower 6 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(90px, -110px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(58px, -93px)
+            scale(1);
+    }
+}
+
+
+/* front-left */
 
 .gift.open ~ .flowers .flower6 {
     animation-name: flower6;
     animation-delay: 0.25s;
 }
 
+@keyframes flower6 {
 
-/* flower 7 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(-70px, -90px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-28px, -78px)
+            scale(1);
+    }
+}
+
+
+/* front-right */
 
 .gift.open ~ .flowers .flower7 {
     animation-name: flower7;
     animation-delay: 0.3s;
 }
 
+@keyframes flower7 {
 
-/* flower 8 */
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    65% {
+        transform:
+            translate(70px, -90px)
+            scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(25px, -78px)
+            scale(1);
+    }
+}
+
+
+/* center-top */
 
 .gift.open ~ .flowers .flower8 {
     animation-name: flower8;
     animation-delay: 0.35s;
 }
 
-
-/* =========================================
-   FLOWER DIRECTIONS
-========================================= */
-
-@keyframes flower1 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(-190px, -125px)
-            rotate(180deg);
-    }
-}
-
-
-@keyframes flower2 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(-110px, -160px)
-            rotate(-180deg);
-    }
-}
-
-
-@keyframes flower3 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(-15px, -175px)
-            rotate(180deg);
-    }
-}
-
-
-@keyframes flower4 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(90px, -150px)
-            rotate(-180deg);
-    }
-}
-
-
-@keyframes flower5 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(150px, -100px)
-            rotate(180deg);
-    }
-}
-
-
-@keyframes flower6 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(135px, -30px)
-            rotate(-180deg);
-    }
-}
-
-
-@keyframes flower7 {
-
-    0% {
-        opacity: 0;
-        transform: translate(-50%, -50%);
-    }
-
-    20% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translate(-115px, -45px)
-            rotate(180deg);
-    }
-}
-
-
 @keyframes flower8 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%) scale(0.5);
     }
 
     20% {
         opacity: 1;
     }
 
+    65% {
+        transform:
+            translate(15px, -165px)
+            scale(1);
+    }
+
     100% {
         opacity: 1;
         transform:
-            translate(55px, -185px)
-            rotate(-180deg);
+            translate(15px, -108px)
+            scale(1);
     }
 }
 
 
 /* =========================================
-   TEXT
+   MESSAGE
+========================================= */
+
+.message {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 280px;
+
+    text-align: center;
+
+    color: #ff9fc2;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(0.8);
+
+    pointer-events: none;
+
+    z-index: 10;
+}
+
+
+/* message appears after flowers */
+
+.gift.open ~ .message {
+    animation:
+        messageAppear
+        0.8s
+        steps(6)
+        forwards;
+
+    animation-delay: 1.7s;
+}
+
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(0.8);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            translateY(-3px)
+            scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   PSST
 ========================================= */
 
 .open-text {
@@ -638,13 +741,13 @@ body {
 
     z-index: 10;
 
-    animation: blink 1.2s infinite steps(2);
+    animation:
+        blink
+        1.2s
+        infinite
+        steps(2);
 }
 
-
-/* =========================================
-   TEXT BLINK
-========================================= */
 
 @keyframes blink {
 
@@ -659,81 +762,6 @@ body {
     100% {
         opacity: 1;
     }
-
-}
-
-
-/* =========================================
-   MESSAGE
-========================================= */
-
-.message {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-
-    bottom: 290px;
-
-    text-align: center;
-
-    color: #ff9fc2;
-
-    font-size: 17px;
-    font-weight: bold;
-
-    line-height: 1.6;
-
-    letter-spacing: 1px;
-
-    opacity: 0;
-
-    transform:
-        translateY(12px)
-        scale(0.8);
-
-    pointer-events: none;
-
-    z-index: 20;
-}
-
-
-/* message appears after flowers */
-
-.gift.open ~ .message {
-    animation:
-        messageAppear
-        0.8s
-        steps(6)
-        forwards;
-
-    animation-delay: 1.65s;
-}
-
-
-@keyframes messageAppear {
-
-    0% {
-        opacity: 0;
-        transform:
-            translateY(12px)
-            scale(0.8);
-    }
-
-    60% {
-        opacity: 1;
-        transform:
-            translateY(-3px)
-            scale(1.05);
-    }
-
-    100% {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
 }
 
 
@@ -759,9 +787,7 @@ body {
 <div class="container">
 
 
-    <!-- =====================================
-         GIFT
-    ====================================== -->
+    <!-- GIFT -->
 
     <div class="gift" id="gift">
 
@@ -775,9 +801,7 @@ body {
     </div>
 
 
-    <!-- =====================================
-         FLOWERS
-    ====================================== -->
+    <!-- FLOWERS -->
 
     <div class="flowers">
 
@@ -794,11 +818,9 @@ body {
     </div>
 
 
-    <!-- =====================================
-         MESSAGE
-    ====================================== -->
+    <!-- MESSAGE -->
 
-    <div class="message" id="message">
+    <div class="message">
 
         Happy You and Me Day 💕
 
@@ -809,13 +831,11 @@ body {
     </div>
 
 
-    <!-- =====================================
-         OPEN TEXT
-    ====================================== -->
+    <!-- OPEN -->
 
     <div class="open-text" id="openText">
 
-        Tap Me ♡
+        Psst... ♡
 
     </div>
 
@@ -825,17 +845,9 @@ body {
 
 <script>
 
-/* =========================================
-   ELEMENTS
-========================================= */
-
 const gift = document.getElementById("gift");
 const openText = document.getElementById("openText");
 
-
-/* =========================================
-   OPEN GIFT
-========================================= */
 
 function openGift() {
 
@@ -843,10 +855,6 @@ function openGift() {
 
 }
 
-
-/* =========================================
-   CLICK EVENTS
-========================================= */
 
 gift.addEventListener("click", openGift);
 
