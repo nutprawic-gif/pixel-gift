@@ -1,0 +1,392 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pixel Gift</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    background: #000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: monospace;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   GIFT
+========================= */
+
+.gift {
+    position: relative;
+
+    width: 160px;
+    height: 150px;
+
+    cursor: pointer;
+
+    image-rendering: pixelated;
+
+    animation: wiggle 1.2s steps(1) infinite;
+}
+
+/* =========================
+   BOX
+========================= */
+
+.box {
+    position: absolute;
+
+    left: 20px;
+    top: 55px;
+
+    width: 120px;
+    height: 80px;
+
+    background: #ff6fae;
+
+    /* pixel shadow / outline */
+    border-top: 6px solid #ff9bc5;
+    border-left: 6px solid #ff9bc5;
+    border-right: 6px solid #b8326d;
+    border-bottom: 8px solid #8f2456;
+}
+
+/* =========================
+   VERTICAL RIBBON
+========================= */
+
+.box::before {
+    content: "";
+
+    position: absolute;
+
+    left: 45px;
+    top: -2px;
+
+    width: 24px;
+    height: 76px;
+
+    background: #ffd0e3;
+
+    box-shadow:
+        6px 0 #ffb1d0;
+}
+
+/* =========================
+   LID
+========================= */
+
+.lid {
+    position: absolute;
+
+    left: 10px;
+    top: 35px;
+
+    width: 140px;
+    height: 30px;
+
+    background: #ff78b2;
+
+    border-top: 6px solid #ffb2d2;
+    border-left: 6px solid #ffb2d2;
+    border-right: 6px solid #b8326d;
+    border-bottom: 6px solid #8f2456;
+
+    z-index: 5;
+}
+
+/* Ribbon on lid */
+
+.lid::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50px;
+    top: -6px;
+
+    width: 24px;
+    height: 30px;
+
+    background: #ffd0e3;
+}
+
+/* =========================
+   BOW
+========================= */
+
+.bow-left {
+    position: absolute;
+
+    left: 40px;
+    top: 8px;
+
+    width: 40px;
+    height: 28px;
+
+    background: #ff75ae;
+
+    border: 6px solid #b8326d;
+
+    transform: rotate(-10deg);
+
+    z-index: 10;
+}
+
+.bow-right {
+    position: absolute;
+
+    right: 40px;
+    top: 8px;
+
+    width: 40px;
+    height: 28px;
+
+    background: #ff75ae;
+
+    border: 6px solid #b8326d;
+
+    transform: rotate(10deg);
+
+    z-index: 10;
+}
+
+/* Pixel corners */
+
+.bow-left::before,
+.bow-right::before {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    background: #ffb2d2;
+}
+
+/* =========================
+   BOW CENTER
+========================= */
+
+.bow-center {
+    position: absolute;
+
+    left: 68px;
+    top: 14px;
+
+    width: 24px;
+    height: 24px;
+
+    background: #ff4f98;
+
+    border: 5px solid #b8326d;
+
+    z-index: 20;
+}
+
+/* =========================
+   SHADOW
+========================= */
+
+.shadow {
+    position: absolute;
+
+    left: 25px;
+    bottom: 0;
+
+    width: 110px;
+    height: 10px;
+
+    background: #3a1230;
+
+    box-shadow:
+        10px 5px #18000f;
+}
+
+/* =========================
+   OPEN TEXT
+========================= */
+
+.open-text {
+    margin-top: 35px;
+
+    color: #ffffff;
+
+    font-family: monospace;
+
+    font-size: 24px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    text-shadow:
+        3px 0 #ff5fa5,
+        0 3px #ff5fa5;
+
+    animation: textBlink 1.2s steps(2) infinite;
+}
+
+/* =========================
+   PIXEL WIGGLE
+========================= */
+
+@keyframes wiggle {
+
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    25% {
+        transform: translateX(-3px) translateY(-2px);
+    }
+
+    50% {
+        transform: translateX(3px) translateY(-4px);
+    }
+
+    75% {
+        transform: translateX(-2px) translateY(-2px);
+    }
+
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+/* =========================
+   TEXT PIXEL BLINK
+========================= */
+
+@keyframes textBlink {
+
+    0% {
+        opacity: 0.65;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.65;
+    }
+}
+
+/* =========================
+   CLICK EFFECT
+========================= */
+
+.gift.opening {
+    animation: openPixel 0.5s steps(4) forwards;
+}
+
+@keyframes openPixel {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.08);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    75% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="gift" id="gift">
+
+        <!-- Bow -->
+        <div class="bow-left"></div>
+        <div class="bow-right"></div>
+        <div class="bow-center"></div>
+
+        <!-- Lid -->
+        <div class="lid"></div>
+
+        <!-- Box -->
+        <div class="box"></div>
+
+        <!-- Shadow -->
+        <div class="shadow"></div>
+
+    </div>
+
+    <div class="open-text" id="openText">
+        Open!
+    </div>
+
+</div>
+
+
+<script>
+
+const gift = document.getElementById("gift");
+const openText = document.getElementById("openText");
+
+function openGift() {
+
+    gift.classList.remove("opening");
+
+    // restart animation
+    void gift.offsetWidth;
+
+    gift.classList.add("opening");
+
+    setTimeout(() => {
+        gift.classList.remove("opening");
+    }, 500);
+}
+
+gift.addEventListener("click", openGift);
+openText.addEventListener("click", openGift);
+
+</script>
+
+</body>
+</html>
+```
