@@ -396,52 +396,224 @@ body {
 }
 
 /* =================================
-   FLOWER POP
+   FLOWER BURST
 ================================= */
 
 .gift.open ~ .flowers .flower {
-    animation: flowerPop 1s steps(8) forwards;
+    opacity: 1;
+    animation-duration: 1.2s;
+    animation-timing-function: steps(8);
+    animation-fill-mode: forwards;
 }
+
+/* ดอกที่ 1 - พุ่งขึ้นซ้าย */
+
+.gift.open ~ .flowers .flower1 {
+    animation-name: burst1;
+}
+
+/* ดอกที่ 2 - พุ่งซ้าย */
 
 .gift.open ~ .flowers .flower2 {
-    animation-delay: 0.1s;
+    animation-name: burst2;
+    animation-delay: 0.08s;
 }
 
+/* ดอกที่ 3 - พุ่งขวา */
+
 .gift.open ~ .flowers .flower3 {
+    animation-name: burst3;
+    animation-delay: 0.15s;
+}
+
+/* ดอกที่ 4 - พุ่งขึ้นขวา */
+
+.gift.open ~ .flowers .flower4 {
+    animation-name: burst4;
     animation-delay: 0.2s;
 }
 
-.gift.open ~ .flowers .flower4 {
-    animation-delay: 0.3s;
-}
 
-@keyframes flowerPop {
+/* =================================
+   BURST 1
+================================= */
+
+@keyframes burst1 {
 
     0% {
         opacity: 0;
         transform:
-            translateY(70px)
-            scale(0);
+            translate(0, 60px)
+            scale(0)
+            rotate(0deg);
     }
 
-    40% {
+    30% {
         opacity: 1;
         transform:
-            translateY(-10px)
-            scale(1.2);
+            translate(-15px, -30px)
+            scale(1.2)
+            rotate(-20deg);
     }
 
-    70% {
+    60% {
         transform:
-            translateY(5px)
-            scale(0.9);
+            translate(-65px, -105px)
+            scale(1)
+            rotate(-45deg);
+    }
+
+    80% {
+        transform:
+            translate(-85px, -85px)
+            scale(1.1)
+            rotate(-25deg);
     }
 
     100% {
         opacity: 1;
         transform:
-            translateY(0)
-            scale(1);
+            translate(-75px, -95px)
+            scale(1)
+            rotate(-35deg);
+    }
+}
+
+
+/* =================================
+   BURST 2
+================================= */
+
+@keyframes burst2 {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 60px)
+            scale(0)
+            rotate(0deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform:
+            translate(-25px, -10px)
+            scale(1.2)
+            rotate(20deg);
+    }
+
+    60% {
+        transform:
+            translate(-110px, -30px)
+            scale(1)
+            rotate(55deg);
+    }
+
+    80% {
+        transform:
+            translate(-125px, -10px)
+            scale(1.1)
+            rotate(35deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(-120px, -20px)
+            scale(1)
+            rotate(45deg);
+    }
+}
+
+
+/* =================================
+   BURST 3
+================================= */
+
+@keyframes burst3 {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 60px)
+            scale(0)
+            rotate(0deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform:
+            translate(20px, -20px)
+            scale(1.2)
+            rotate(-20deg);
+    }
+
+    60% {
+        transform:
+            translate(100px, -45px)
+            scale(1)
+            rotate(40deg);
+    }
+
+    80% {
+        transform:
+            translate(125px, -20px)
+            scale(1.1)
+            rotate(20deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(115px, -30px)
+            scale(1)
+            rotate(35deg);
+    }
+}
+
+
+/* =================================
+   BURST 4
+================================= */
+
+@keyframes burst4 {
+
+    0% {
+        opacity: 0;
+        transform:
+            translate(0, 60px)
+            scale(0)
+            rotate(0deg);
+    }
+
+    30% {
+        opacity: 1;
+        transform:
+            translate(15px, -40px)
+            scale(1.2)
+            rotate(20deg);
+    }
+
+    60% {
+        transform:
+            translate(65px, -115px)
+            scale(1)
+            rotate(50deg);
+    }
+
+    80% {
+        transform:
+            translate(90px, -90px)
+            scale(1.1)
+            rotate(30deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            translate(80px, -100px)
+            scale(1)
+            rotate(45deg);
     }
 }
 
