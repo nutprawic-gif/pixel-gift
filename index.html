@@ -5,32 +5,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pixel Gift</title>
+<title>For You ♡</title>
 
 <style>
+
+/* =========================================
+   BASIC
+========================================= */
 
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
     margin: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
 
+body {
     background: #000;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font-family: monospace;
+    font-family: "Courier New", monospace;
 }
 
 
 /* =========================================
-   CONTAINER
+   MAIN CONTAINER
 ========================================= */
 
 .container {
@@ -59,11 +66,9 @@ body {
 
     cursor: pointer;
 
-    image-rendering: pixelated;
+    z-index: 5;
 
-    animation: wiggle 1.2s steps(1) infinite;
-
-    z-index: 10;
+    animation: wiggle 2s infinite steps(2);
 }
 
 
@@ -74,35 +79,49 @@ body {
 .box {
     position: absolute;
 
-    left: 20px;
-    top: 55px;
+    width: 160px;
+    height: 105px;
 
-    width: 120px;
-    height: 80px;
+    left: 0;
+    bottom: 0;
 
-    background: #ff6fae;
+    background: #ff5c9a;
 
-    border-top: 6px solid #ff9bc5;
-    border-left: 6px solid #ff9bc5;
-    border-right: 6px solid #b8326d;
-    border-bottom: 8px solid #8f2456;
+    border: 6px solid #ff9fc2;
 }
 
 
-/* Vertical ribbon */
+/* vertical ribbon */
 
 .box::before {
     content: "";
 
     position: absolute;
 
-    left: 45px;
-    top: -2px;
+    width: 22px;
+    height: 99px;
 
-    width: 24px;
-    height: 76px;
+    left: 63px;
+    top: 0;
 
-    background: #ffd0e3;
+    background: #ffd166;
+}
+
+
+/* horizontal ribbon */
+
+.box::after {
+    content: "";
+
+    position: absolute;
+
+    width: 148px;
+    height: 22px;
+
+    left: 0;
+    top: 35px;
+
+    background: #ffd166;
 }
 
 
@@ -113,40 +132,39 @@ body {
 .lid {
     position: absolute;
 
-    left: 10px;
-    top: 35px;
+    width: 170px;
+    height: 38px;
 
-    width: 140px;
-    height: 30px;
+    left: -5px;
+    top: 12px;
 
-    background: #ff78b2;
+    background: #ff72aa;
 
-    border-top: 6px solid #ffb2d2;
-    border-left: 6px solid #ffb2d2;
-    border-right: 6px solid #b8326d;
-    border-bottom: 6px solid #8f2456;
+    border: 6px solid #ffb0ce;
 
-    z-index: 5;
+    z-index: 3;
+
+    transform-origin: left bottom;
 
     transition:
-        transform 0.45s steps(5);
+        transform 0.7s steps(8);
 }
 
 
-/* Ribbon on lid */
+/* lid ribbon */
 
 .lid::after {
     content: "";
 
     position: absolute;
 
-    left: 50px;
-    top: -6px;
+    width: 22px;
+    height: 32px;
 
-    width: 24px;
-    height: 30px;
+    left: 68px;
+    top: 0;
 
-    background: #ffd0e3;
+    background: #ffd166;
 }
 
 
@@ -154,116 +172,87 @@ body {
    BOW
 ========================================= */
 
-.bow-left {
-    position: absolute;
-
-    left: 40px;
-    top: 8px;
-
-    width: 40px;
-    height: 28px;
-
-    background: #ff75ae;
-
-    border: 6px solid #b8326d;
-
-    transform: rotate(-10deg);
-
-    z-index: 10;
-
-    transition:
-        transform 0.45s steps(5);
-}
-
-
+.bow-left,
 .bow-right {
     position: absolute;
 
-    right: 40px;
-    top: 8px;
+    width: 38px;
+    height: 30px;
 
-    width: 40px;
-    height: 28px;
+    top: -15px;
 
-    background: #ff75ae;
+    background: #ffd166;
 
-    border: 6px solid #b8326d;
+    border: 5px solid #fff0a6;
 
-    transform: rotate(10deg);
-
-    z-index: 10;
+    z-index: 4;
 
     transition:
-        transform 0.45s steps(5);
+        transform 0.7s steps(8);
 }
 
+.bow-left {
+    left: 39px;
 
-.bow-center {
-    position: absolute;
+    transform: rotate(-20deg);
+}
 
-    left: 68px;
-    top: 14px;
+.bow-right {
+    right: 39px;
 
-    width: 24px;
-    height: 24px;
-
-    background: #ff4f98;
-
-    border: 5px solid #b8326d;
-
-    z-index: 20;
-
-    transition:
-        transform 0.45s steps(5);
+    transform: rotate(20deg);
 }
 
 
 /* =========================================
-   SHADOW
+   OPEN ANIMATION
 ========================================= */
 
-.shadow {
-    position: absolute;
+.gift.open .lid {
+    transform:
+        translate(-5px, -55px)
+        rotate(-5deg);
+}
 
-    left: 25px;
-    bottom: 0;
+.gift.open .bow-left {
+    transform:
+        translate(-18px, -25px)
+        rotate(-35deg);
+}
 
-    width: 110px;
-    height: 10px;
-
-    background: #3a1230;
-
-    box-shadow:
-        10px 5px #18000f;
+.gift.open .bow-right {
+    transform:
+        translate(18px, -25px)
+        rotate(35deg);
 }
 
 
 /* =========================================
-   OPEN TEXT
+   WIGGLE
 ========================================= */
 
-.open-text {
-    position: absolute;
+@keyframes wiggle {
 
-    bottom: 40px;
+    0% {
+        transform: rotate(0deg);
+    }
 
-    color: white;
+    25% {
+        transform: rotate(-2deg);
+    }
 
-    font-size: 24px;
-    font-weight: bold;
+    50% {
+        transform: rotate(2deg);
+    }
 
-    letter-spacing: 2px;
+    75% {
+        transform: rotate(-1deg);
+    }
 
-    cursor: pointer;
+    100% {
+        transform: rotate(0deg);
+    }
 
-    text-shadow:
-        3px 0 #ff5fa5,
-        0 3px #ff5fa5;
-
-    animation:
-        textBlink 1.2s steps(2) infinite;
-
-    z-index: 30;
 }
 
 
@@ -293,80 +282,57 @@ body {
 .flower {
     position: absolute;
 
-    width: 30px;
-    height: 30px;
+    left: 50%;
+    top: 50%;
 
-    left: 165px;
-    bottom: 0;
+    width: 22px;
+    height: 22px;
 
     opacity: 0;
+
+    transform: translate(-50%, -50%);
 
     image-rendering: pixelated;
 }
 
 
-/* =========================================
-   FLOWER CENTER
-========================================= */
+/* petals */
+
+.flower::before {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    left: 6px;
+    top: 6px;
+
+    background: currentColor;
+
+    box-shadow:
+        -8px 0 currentColor,
+        8px 0 currentColor,
+        0 -8px currentColor,
+        0 8px currentColor;
+}
+
+
+/* flower center */
 
 .flower::after {
     content: "";
 
     position: absolute;
 
-    left: 9px;
-    top: 9px;
+    width: 7px;
+    height: 7px;
 
-    width: 12px;
-    height: 12px;
+    left: 8px;
+    top: 8px;
 
-    background: #ffd85c;
-
-    z-index: 5;
-}
-
-
-/* =========================================
-   PETALS
-========================================= */
-
-.flower span {
-    position: absolute;
-
-    width: 12px;
-    height: 12px;
-}
-
-
-/* Top */
-
-.flower span:nth-child(1) {
-    left: 9px;
-    top: 0;
-}
-
-
-/* Right */
-
-.flower span:nth-child(2) {
-    right: 0;
-    top: 9px;
-}
-
-
-/* Bottom */
-
-.flower span:nth-child(3) {
-    left: 9px;
-    bottom: 0;
-}
-
-
-/* Left */
-
-.flower span:nth-child(4) {
-    left: 0;
-    top: 9px;
+    background: #ffd166;
 }
 
 
@@ -374,100 +340,36 @@ body {
    FLOWER COLORS
 ========================================= */
 
-.flower.pink span {
-    background: #ff8fbd;
-}
-
-.flower.yellow span {
-    background: #ffd45c;
-}
-
-.flower.purple span {
-    background: #c994ff;
-}
-
-.flower.white span {
-    background: #ffffff;
-}
-
-.flower.blue span {
-    background: #75cfff;
-}
-
-
-/* =========================================
-   FLOWER START POSITIONS
-========================================= */
-
 .flower1 {
-    left: 165px;
-    bottom: 0;
+    color: #ff6fae;
 }
 
 .flower2 {
-    left: 165px;
-    bottom: 0;
+    color: #ffd84d;
 }
 
 .flower3 {
-    left: 165px;
-    bottom: 0;
+    color: #b58cff;
 }
 
 .flower4 {
-    left: 165px;
-    bottom: 0;
+    color: #ffffff;
 }
 
 .flower5 {
-    left: 165px;
-    bottom: 0;
+    color: #ff8fc7;
 }
 
 .flower6 {
-    left: 165px;
-    bottom: 0;
+    color: #ffe36e;
 }
 
 .flower7 {
-    left: 165px;
-    bottom: 0;
+    color: #c39bff;
 }
 
 .flower8 {
-    left: 165px;
-    bottom: 0;
-}
-
-
-/* =========================================
-   OPEN GIFT
-========================================= */
-
-.gift.open .lid {
-    transform:
-        translate(-5px, -55px)
-        rotate(-5deg);
-}
-
-
-.gift.open .bow-left {
-    transform:
-        translate(-30px, -50px)
-        rotate(-25deg);
-}
-
-
-.gift.open .bow-right {
-    transform:
-        translate(30px, -50px)
-        rotate(25deg);
-}
-
-
-.gift.open .bow-center {
-    transform:
-        translateY(-50px);
+    color: #7fdcff;
 }
 
 
@@ -476,549 +378,375 @@ body {
 ========================================= */
 
 .gift.open ~ .flowers .flower {
-
     animation-duration: 1.4s;
 
-    animation-timing-function: steps(10);
-
     animation-fill-mode: forwards;
+
+    animation-timing-function: steps(10);
 }
 
 
-/* =========================================
-   FLOWER 1
-   UP LEFT
-========================================= */
+/* flower 1 */
 
 .gift.open ~ .flowers .flower1 {
     animation-name: flower1;
+    animation-delay: 0s;
 }
 
 
-/* =========================================
-   FLOWER 2
-   FAR LEFT
-========================================= */
+/* flower 2 */
 
 .gift.open ~ .flowers .flower2 {
-
     animation-name: flower2;
-
     animation-delay: 0.05s;
 }
 
 
-/* =========================================
-   FLOWER 3
-   UP RIGHT
-========================================= */
+/* flower 3 */
 
 .gift.open ~ .flowers .flower3 {
-
     animation-name: flower3;
-
-    animation-delay: 0.10s;
+    animation-delay: 0.1s;
 }
 
 
-/* =========================================
-   FLOWER 4
-   FAR RIGHT
-========================================= */
+/* flower 4 */
 
 .gift.open ~ .flowers .flower4 {
-
     animation-name: flower4;
-
     animation-delay: 0.15s;
 }
 
 
-/* =========================================
-   FLOWER 5
-   STRAIGHT UP
-========================================= */
+/* flower 5 */
 
 .gift.open ~ .flowers .flower5 {
-
     animation-name: flower5;
-
-    animation-delay: 0.20s;
+    animation-delay: 0.2s;
 }
 
 
-/* =========================================
-   FLOWER 6
-   LEFT DOWN
-========================================= */
+/* flower 6 */
 
 .gift.open ~ .flowers .flower6 {
-
     animation-name: flower6;
-
     animation-delay: 0.25s;
 }
 
 
-/* =========================================
-   FLOWER 7
-   RIGHT DOWN
-========================================= */
+/* flower 7 */
 
 .gift.open ~ .flowers .flower7 {
-
     animation-name: flower7;
-
-    animation-delay: 0.30s;
+    animation-delay: 0.3s;
 }
 
 
-/* =========================================
-   FLOWER 8
-   HIGH RIGHT
-========================================= */
+/* flower 8 */
 
 .gift.open ~ .flowers .flower8 {
-
     animation-name: flower8;
-
     animation-delay: 0.35s;
 }
 
 
 /* =========================================
-   ANIMATION 1
+   FLOWER DIRECTIONS
 ========================================= */
 
 @keyframes flower1 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(-20px, -50px)
-            scale(1.2)
-            rotate(-20deg);
-    }
-
-    55% {
-        transform:
-            translate(-75px, -130px)
-            scale(1)
-            rotate(-45deg);
-    }
-
-    75% {
-        transform:
-            translate(-95px, -105px)
-            scale(1.1)
-            rotate(-25deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(-85px, -115px)
-            scale(1)
-            rotate(-35deg);
+            translate(-190px, -125px)
+            rotate(180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 2
-========================================= */
 
 @keyframes flower2 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(-40px, -30px)
-            scale(1.2)
-            rotate(20deg);
-    }
-
-    55% {
-        transform:
-            translate(-135px, -65px)
-            scale(1)
-            rotate(50deg);
-    }
-
-    75% {
-        transform:
-            translate(-155px, -40px)
-            scale(1.1)
-            rotate(30deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(-145px, -50px)
-            scale(1)
-            rotate(45deg);
+            translate(-110px, -160px)
+            rotate(-180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 3
-========================================= */
 
 @keyframes flower3 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(20px, -55px)
-            scale(1.2)
-            rotate(-20deg);
-    }
-
-    55% {
-        transform:
-            translate(75px, -145px)
-            scale(1)
-            rotate(45deg);
-    }
-
-    75% {
-        transform:
-            translate(100px, -115px)
-            scale(1.1)
-            rotate(20deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(90px, -125px)
-            scale(1)
-            rotate(35deg);
+            translate(-15px, -175px)
+            rotate(180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 4
-========================================= */
 
 @keyframes flower4 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(45px, -20px)
-            scale(1.2)
-            rotate(20deg);
-    }
-
-    55% {
-        transform:
-            translate(145px, -55px)
-            scale(1)
-            rotate(50deg);
-    }
-
-    75% {
-        transform:
-            translate(165px, -30px)
-            scale(1.1)
-            rotate(25deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(155px, -40px)
-            scale(1)
-            rotate(40deg);
+            translate(90px, -150px)
+            rotate(-180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 5
-========================================= */
 
 @keyframes flower5 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(0, -70px)
-            scale(1.2)
-            rotate(20deg);
-    }
-
-    55% {
-        transform:
-            translate(0, -170px)
-            scale(1)
-            rotate(60deg);
-    }
-
-    75% {
-        transform:
-            translate(5px, -145px)
-            scale(1.1)
-            rotate(30deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(0, -155px)
-            scale(1)
-            rotate(45deg);
+            translate(150px, -100px)
+            rotate(180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 6
-========================================= */
 
 @keyframes flower6 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(-25px, -20px)
-            scale(1.2)
-            rotate(-20deg);
-    }
-
-    55% {
-        transform:
-            translate(-85px, 5px)
-            scale(1)
-            rotate(-55deg);
-    }
-
-    75% {
-        transform:
-            translate(-105px, -10px)
-            scale(1.1)
-            rotate(-30deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(-95px, -5px)
-            scale(1)
-            rotate(-40deg);
+            translate(135px, -30px)
+            rotate(-180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 7
-========================================= */
 
 @keyframes flower7 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(30px, -20px)
-            scale(1.2)
-            rotate(20deg);
-    }
-
-    55% {
-        transform:
-            translate(95px, 5px)
-            scale(1)
-            rotate(55deg);
-    }
-
-    75% {
-        transform:
-            translate(115px, -10px)
-            scale(1.1)
-            rotate(30deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(105px, -5px)
-            scale(1)
-            rotate(45deg);
+            translate(-115px, -45px)
+            rotate(180deg);
     }
 }
 
-
-/* =========================================
-   ANIMATION 8
-========================================= */
 
 @keyframes flower8 {
 
     0% {
         opacity: 0;
-
-        transform:
-            translate(0, 60px)
-            scale(0)
-            rotate(0deg);
+        transform: translate(-50%, -50%);
     }
 
-    25% {
+    20% {
         opacity: 1;
-
-        transform:
-            translate(35px, -60px)
-            scale(1.2)
-            rotate(20deg);
-    }
-
-    55% {
-        transform:
-            translate(125px, -135px)
-            scale(1)
-            rotate(55deg);
-    }
-
-    75% {
-        transform:
-            translate(145px, -110px)
-            scale(1.1)
-            rotate(30deg);
     }
 
     100% {
         opacity: 1;
-
         transform:
-            translate(135px, -120px)
-            scale(1)
-            rotate(45deg);
+            translate(55px, -185px)
+            rotate(-180deg);
     }
 }
 
 
 /* =========================================
-   GIFT WIGGLE
+   TEXT
 ========================================= */
 
-@keyframes wiggle {
+.open-text {
+    position: absolute;
+
+    bottom: 48px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    z-index: 10;
+
+    animation: blink 1.2s infinite steps(2);
+}
+
+
+/* =========================================
+   TEXT BLINK
+========================================= */
+
+@keyframes blink {
 
     0% {
-        transform: translateX(0);
-    }
-
-    25% {
-        transform: translateX(-3px);
+        opacity: 1;
     }
 
     50% {
-        transform: translateX(3px);
-    }
-
-    75% {
-        transform: translateX(-2px);
+        opacity: 0.45;
     }
 
     100% {
-        transform: translateX(0);
+        opacity: 1;
     }
+
 }
 
 
 /* =========================================
-   OPEN TEXT ANIMATION
+   MESSAGE
 ========================================= */
 
-@keyframes textBlink {
+.message {
+    position: absolute;
 
-    0%, 100% {
-        opacity: 0.65;
+    left: 0;
+    right: 0;
+
+    bottom: 5px;
+
+    text-align: center;
+
+    color: #ff9fc2;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    line-height: 1.6;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(0.8);
+
+    pointer-events: none;
+
+    z-index: 20;
+}
+
+
+/* message appears after flowers */
+
+.gift.open ~ .message {
+    animation:
+        messageAppear
+        0.8s
+        steps(6)
+        forwards;
+
+    animation-delay: 1.65s;
+}
+
+
+@keyframes messageAppear {
+
+    0% {
+        opacity: 0;
+        transform:
+            translateY(12px)
+            scale(0.8);
     }
 
-    50% {
+    60% {
         opacity: 1;
+        transform:
+            translateY(-3px)
+            scale(1.05);
     }
+
+    100% {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .container {
+        transform: scale(0.9);
+    }
+
 }
 
 </style>
@@ -1027,26 +755,22 @@ body {
 
 <body>
 
+
 <div class="container">
 
 
     <!-- =====================================
-         GIFT BOX
+         GIFT
     ====================================== -->
 
     <div class="gift" id="gift">
 
         <div class="bow-left"></div>
-
         <div class="bow-right"></div>
-
-        <div class="bow-center"></div>
 
         <div class="lid"></div>
 
         <div class="box"></div>
-
-        <div class="shadow"></div>
 
     </div>
 
@@ -1057,113 +781,41 @@ body {
 
     <div class="flowers">
 
+        <div class="flower flower1"></div>
+        <div class="flower flower2"></div>
+        <div class="flower flower3"></div>
+        <div class="flower flower4"></div>
 
-        <!-- Flower 1 -->
-
-        <div class="flower flower1 pink">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 2 -->
-
-        <div class="flower flower2 yellow">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 3 -->
-
-        <div class="flower flower3 purple">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 4 -->
-
-        <div class="flower flower4 white">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 5 -->
-
-        <div class="flower flower5 pink">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 6 -->
-
-        <div class="flower flower6 yellow">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 7 -->
-
-        <div class="flower flower7 purple">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-
-        <!-- Flower 8 -->
-
-        <div class="flower flower8 blue">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
+        <div class="flower flower5"></div>
+        <div class="flower flower6"></div>
+        <div class="flower flower7"></div>
+        <div class="flower flower8"></div>
 
     </div>
 
 
     <!-- =====================================
-         OPEN
+         MESSAGE
+    ====================================== -->
+
+    <div class="message" id="message">
+
+        Happy You and Me Day 💕
+
+        <br>
+
+        Luv U ♡
+
+    </div>
+
+
+    <!-- =====================================
+         OPEN TEXT
     ====================================== -->
 
     <div class="open-text" id="openText">
 
-        Open!
+        Psst... ♡
 
     </div>
 
@@ -1173,40 +825,32 @@ body {
 
 <script>
 
-const gift = document.getElementById("gift");
+/* =========================================
+   ELEMENTS
+========================================= */
 
+const gift = document.getElementById("gift");
 const openText = document.getElementById("openText");
 
 
+/* =========================================
+   OPEN GIFT
+========================================= */
+
 function openGift() {
-
-    /*
-        ถ้ายังไม่เปิด
-        → เปิดกล่อง
-
-        ถ้าเปิดแล้ว
-        → ปิดกลับ
-    */
 
     gift.classList.toggle("open");
 
 }
 
 
-/* กดกล่อง */
+/* =========================================
+   CLICK EVENTS
+========================================= */
 
-gift.addEventListener(
-    "click",
-    openGift
-);
+gift.addEventListener("click", openGift);
 
-
-/* กด Open! */
-
-openText.addEventListener(
-    "click",
-    openGift
-);
+openText.addEventListener("click", openGift);
 
 </script>
 
