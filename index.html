@@ -33,7 +33,7 @@ body {
 
 
 /* =========================================
-   CONTAINER
+   MAIN CONTAINER
 ========================================= */
 
 .container {
@@ -68,9 +68,7 @@ body {
 }
 
 
-/* =========================================
-   BOX
-========================================= */
+/* กล่อง */
 
 .box {
     position: absolute;
@@ -87,7 +85,7 @@ body {
 }
 
 
-/* vertical ribbon */
+/* ริบบิ้นแนวตั้ง */
 
 .box::before {
     content: "";
@@ -104,7 +102,7 @@ body {
 }
 
 
-/* horizontal ribbon */
+/* ริบบิ้นแนวนอน */
 
 .box::after {
     content: "";
@@ -147,7 +145,7 @@ body {
 }
 
 
-/* ribbon on lid */
+/* ริบบิ้นบนฝากล่อง */
 
 .lid::after {
     content: "";
@@ -187,11 +185,13 @@ body {
         transform 0.7s steps(8);
 }
 
+
 .bow-left {
     left: 30px;
 
     transform: rotate(-20deg);
 }
+
 
 .bow-right {
     right: 30px;
@@ -210,11 +210,13 @@ body {
         rotate(-5deg);
 }
 
+
 .gift.open .bow-left {
     transform:
         translate(-12px, -18px)
         rotate(-35deg);
 }
+
 
 .gift.open .bow-right {
     transform:
@@ -224,7 +226,7 @@ body {
 
 
 /* =========================================
-   WIGGLE
+   GIFT WIGGLE
 ========================================= */
 
 @keyframes wiggle {
@@ -248,7 +250,6 @@ body {
     100% {
         transform: rotate(0deg);
     }
-
 }
 
 
@@ -282,13 +283,14 @@ body {
 
     opacity: 0;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     image-rendering: pixelated;
 }
 
 
-/* petals */
+/* กลีบดอก */
 
 .flower::before {
     content: "";
@@ -311,7 +313,7 @@ body {
 }
 
 
-/* center */
+/* เกสร */
 
 .flower::after {
     content: "";
@@ -328,7 +330,9 @@ body {
 }
 
 
-/* colors */
+/* =========================================
+   FLOWER COLORS
+========================================= */
 
 .flower1 {
     color: #ff6fae;
@@ -364,11 +368,11 @@ body {
 
 
 /* =========================================
-   FLOWER ANIMATIONS
-   Flowers gather on the lid
+   FLOWER ANIMATION
 ========================================= */
 
 .gift.open ~ .flowers .flower {
+
     animation-duration: 1.5s;
 
     animation-fill-mode: forwards;
@@ -377,21 +381,82 @@ body {
 }
 
 
-/* left */
+/* ดอกที่ 1 */
 
 .gift.open ~ .flowers .flower1 {
     animation-name: flower1;
     animation-delay: 0s;
 }
 
-ให้เปลี่ยนค่า `@keyframes flower1` ถึง `flower8` เป็นชุดนี้
 
-```css
+/* ดอกที่ 2 */
+
+.gift.open ~ .flowers .flower2 {
+    animation-name: flower2;
+    animation-delay: 0.05s;
+}
+
+
+/* ดอกที่ 3 */
+
+.gift.open ~ .flowers .flower3 {
+    animation-name: flower3;
+    animation-delay: 0.1s;
+}
+
+
+/* ดอกที่ 4 */
+
+.gift.open ~ .flowers .flower4 {
+    animation-name: flower4;
+    animation-delay: 0.15s;
+}
+
+
+/* ดอกที่ 5 */
+
+.gift.open ~ .flowers .flower5 {
+    animation-name: flower5;
+    animation-delay: 0.2s;
+}
+
+
+/* ดอกที่ 6 */
+
+.gift.open ~ .flowers .flower6 {
+    animation-name: flower6;
+    animation-delay: 0.25s;
+}
+
+
+/* ดอกที่ 7 */
+
+.gift.open ~ .flowers .flower7 {
+    animation-name: flower7;
+    animation-delay: 0.3s;
+}
+
+
+/* ดอกที่ 8 */
+
+.gift.open ~ .flowers .flower8 {
+    animation-name: flower8;
+    animation-delay: 0.35s;
+}
+
+
+/* =========================================
+   FLOWER 1
+========================================= */
+
 @keyframes flower1 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -406,6 +471,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(-30px, -55px)
             scale(1);
@@ -413,11 +479,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 2
+========================================= */
+
 @keyframes flower2 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -432,6 +505,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(-18px, -58px)
             scale(1);
@@ -439,11 +513,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 3
+========================================= */
+
 @keyframes flower3 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -458,6 +539,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(-6px, -62px)
             scale(1);
@@ -465,11 +547,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 4
+========================================= */
+
 @keyframes flower4 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -484,6 +573,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(18px, -58px)
             scale(1);
@@ -491,11 +581,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 5
+========================================= */
+
 @keyframes flower5 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -510,6 +607,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(30px, -55px)
             scale(1);
@@ -517,11 +615,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 6
+========================================= */
+
 @keyframes flower6 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -536,6 +641,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(-12px, -48px)
             scale(1);
@@ -543,11 +649,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 7
+========================================= */
+
 @keyframes flower7 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -562,6 +675,7 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(12px, -48px)
             scale(1);
@@ -569,11 +683,18 @@ body {
 }
 
 
+/* =========================================
+   FLOWER 8
+========================================= */
+
 @keyframes flower8 {
 
     0% {
         opacity: 0;
-        transform: translate(-50%, -50%) scale(0.5);
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.5);
     }
 
     20% {
@@ -588,13 +709,12 @@ body {
 
     100% {
         opacity: 1;
+
         transform:
             translate(6px, -62px)
             scale(1);
     }
 }
-```
-
 
 
 /* =========================================
@@ -614,6 +734,7 @@ body {
     color: #ff9fc2;
 
     font-size: 17px;
+
     font-weight: bold;
 
     line-height: 1.6;
@@ -632,13 +753,12 @@ body {
 }
 
 
-/* message appears after flowers */
+/* แสดงข้อความหลังดอกไม้ */
 
 .gift.open ~ .message {
+
     animation:
-        messageAppear
-        0.8s
-        steps(6)
+        messageAppear 0.8s steps(6)
         forwards;
 
     animation-delay: 1.7s;
@@ -674,7 +794,7 @@ body {
 
 
 /* =========================================
-   PSST
+   OPEN TEXT
 ========================================= */
 
 .open-text {
@@ -686,9 +806,10 @@ body {
 
     text-align: center;
 
-    color: #ffffff;
+    color: #fff;
 
     font-size: 20px;
+
     font-weight: bold;
 
     letter-spacing: 1px;
@@ -698,10 +819,7 @@ body {
     z-index: 10;
 
     animation:
-        blink
-        1.2s
-        infinite
-        steps(2);
+        blink 1.2s infinite steps(2);
 }
 
 
@@ -743,11 +861,14 @@ body {
 <div class="container">
 
 
-    <!-- GIFT -->
+    <!-- =====================================
+         GIFT
+    ====================================== -->
 
     <div class="gift" id="gift">
 
         <div class="bow-left"></div>
+
         <div class="bow-right"></div>
 
         <div class="lid"></div>
@@ -757,29 +878,38 @@ body {
     </div>
 
 
-    <!-- FLOWERS -->
+    <!-- =====================================
+         FLOWERS
+    ====================================== -->
 
     <div class="flowers">
 
         <div class="flower flower1"></div>
+
         <div class="flower flower2"></div>
+
         <div class="flower flower3"></div>
+
         <div class="flower flower4"></div>
 
         <div class="flower flower5"></div>
+
         <div class="flower flower6"></div>
+
         <div class="flower flower7"></div>
+
         <div class="flower flower8"></div>
 
     </div>
 
 
-    <!-- MESSAGE -->
+    <!-- =====================================
+         MESSAGE
+    ====================================== -->
 
     <div class="message">
 
         Happy You and Me Day 💕
-
         <br>
 
         Luv U ♡
@@ -787,11 +917,13 @@ body {
     </div>
 
 
-    <!-- OPEN -->
+    <!-- =====================================
+         OPEN BUTTON
+    ====================================== -->
 
     <div class="open-text" id="openText">
 
-        TAP ME ♡
+        Psst... ♡
 
     </div>
 
@@ -801,9 +933,20 @@ body {
 
 <script>
 
-const gift = document.getElementById("gift");
-const openText = document.getElementById("openText");
+/* =========================================
+   ELEMENTS
+========================================= */
 
+const gift =
+    document.getElementById("gift");
+
+const openText =
+    document.getElementById("openText");
+
+
+/* =========================================
+   OPEN GIFT
+========================================= */
 
 function openGift() {
 
@@ -812,9 +955,24 @@ function openGift() {
 }
 
 
-gift.addEventListener("click", openGift);
+/* =========================================
+   CLICK GIFT
+========================================= */
 
-openText.addEventListener("click", openGift);
+gift.addEventListener(
+    "click",
+    openGift
+);
+
+
+/* =========================================
+   CLICK PSST
+========================================= */
+
+openText.addEventListener(
+    "click",
+    openGift
+);
 
 </script>
 
